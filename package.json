@@ -2,7 +2,8 @@
   "name": "sweetable",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.js",
+  "main": "./js/index.js",
+  "type": "module",
   "scripts": {
     "postcss:watch": "postcss ./css/src/style.css --dir ./css/ --watch",
     "vite:watch": "vite",
