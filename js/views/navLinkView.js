@@ -1,5 +1,5 @@
 // export const clearLinks =
-import { elements } from "./base";
+import { elements } from "./base.js";
 
 export const initialize = (navLinks, onClickNavLink) => {
   renderNavLinks(navLinks);
