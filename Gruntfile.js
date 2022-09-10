@@ -3,9 +3,9 @@ const fs = require("fs");
 const defaultTaskName = "default";
 const sourceSvgsTasks = ["copyAndOptimizeImages", "svg_sprite"];
 
-const PATH_FOLDER_srcImages = "assets/images/src";
-const PATH_FOLDER_stagedImages = "assets/images/staging";
-const PATH_FOLDER_distImages = "assets/images/dist";
+const PATH_FOLDER_srcImages = "assets/images/svg/src";
+const PATH_FOLDER_stagedImages = "assets/images/svg/staging";
+const PATH_FOLDER_distImages = "assets/images/svg";
 
 // This variable should be prefixed to filenames of those SVGs,
 // where we don't want to perform any SVG optimizations so

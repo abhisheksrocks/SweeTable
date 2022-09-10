@@ -8,13 +8,43 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <h1>Hello World</h1>
-    <svg class="icon-home">
-      <use xlink:href="./assets/images/dist/output.svg#icon-home" />
-    </svg>
-    <svg class="icon-home">
-      <use xlink:href="./assets/images/dist/output.svg#logo-default" />
-    </svg>
-    <script src="./js/index.js"></script>
+    <nav class="navbar">
+      <div class="logo-container center-horizontal">
+        <div class="logo-box center-vertical center-horizontal">
+          <svg class="logo-icon">
+            <use xlink:href="./assets/images/svg/output.svg#logo-default"></use>
+          </svg>
+        </div>
+        <h1 class="logo-title fg-color-1">
+          <span class="fg-color-1-opacity-50">Swee</span>Table
+        </h1>
+      </div>
+      <ul class="nav-links">
+        <!-- <li class="nav-link center-horizontal">
+          <div class="link-box center-horizontal">
+            <svg class="link-icon">
+              <use xlink:href="./assets/images/svg/output.svg#icon-home"></use>
+            </svg>
+          </div>
+          <h4 class="link-title">Home</h4>
+          <div class="nav-link-bg"></div>
+        </li>
+        <li class="nav-link center-horizontal nav-link--active">
+          <div class="link-box center-horizontal">
+            <svg class="link-icon">
+              <use
+                xlink:href="./assets/images/svg/output.svg#icon-generator"
+              ></use>
+            </svg>
+          </div>
+          <h4 class="link-title">Generator Lorem ipsum dolor</h4>
+          <div class="nav-link-bg"></div>
+        </li> -->
+      </ul>
+      <div class="column-spacer"></div>
+      <div class="other-buttons"></div>
+    </nav>
+    <main></main>
+    <script src="./js/index.js" type="module"></script>
   </body>
 </html>
