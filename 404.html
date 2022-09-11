@@ -11,7 +11,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         // location.pathname = location.pathname;
         const defaultPath = location.pathname;
-        const parsablePath = myString.replace("/SweeTable/", "/SweeTable/#");
+        const parsablePath = defaultPath.replace("/SweeTable/", "/SweeTable/#");
         document.querySelector("body").innerHTML = `
             <a href="${parsablePath}">Click here to redirect</a>
         `;
