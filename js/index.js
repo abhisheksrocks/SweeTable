@@ -87,12 +87,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
   matchRoute(hashString).isActive = true;
 
   navLinks.push(
-    new NavLink("/assets/images/svg/output.svg#icon-home", "Home", routes[0])
+    new NavLink("./assets/images/svg/output.svg#icon-home", "Home", routes[0])
   );
 
   navLinks.push(
     new NavLink(
-      "/assets/images/svg/output.svg#icon-generator",
+      "./assets/images/svg/output.svg#icon-generator",
       "Generator",
       routes[1]
     )
