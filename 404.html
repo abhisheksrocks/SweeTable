@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirect</title>
+    <title>Redirecting</title>
   </head>
   <body>
     <script>
@@ -12,13 +12,14 @@
         // location.pathname = location.pathname;
         const defaultPath = location.pathname;
         const parsablePath = defaultPath.replace("/SweeTable/", "/SweeTable/#");
-        document.querySelector("body").innerHTML = `
-            <a href="${parsablePath}">Click here to redirect</a>
-        `;
-        // document.location.href = parsablePath;
-        // const refPathName = location.pathname;
-        // const generatedHash = "#" + refPathName.substring(1);
-        // location.pathname = "/" + generatedHash;
+
+        // This works:
+        // document.querySelector("body").innerHTML = `
+        //     <a href="${parsablePath}">Click here to redirect</a>
+        // `;
+
+        // Testing this
+        window.location.href = `https://${location.hostname}${parsablePath}`;
       });
     </script>
   </body>
