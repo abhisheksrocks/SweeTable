@@ -10,8 +10,9 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // location.pathname = location.pathname;
-        const myString = location.pathname;
-        location.pathname = myString.replace("/SweeTable/", "/SweeTable/#");
+        const defaultPath = location.pathname;
+        const parsablePath = myString.replace("/SweeTable/", "/SweeTable/#");
+        document.location.href = parsablePath;
         // const refPathName = location.pathname;
         // const generatedHash = "#" + refPathName.substring(1);
         // location.pathname = "/" + generatedHash;
