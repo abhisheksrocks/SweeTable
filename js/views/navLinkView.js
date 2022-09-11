@@ -3,11 +3,17 @@ import { elements } from "./base.js";
 
 export const initialize = (navLinks, onClickNavLink) => {
   renderNavLinks(navLinks);
-  // onClickNavLink(path);
+  // onClickNavLink(location.pathname);
+  let hashString = location.hash;
+  hashString = hashString.replace("#", "/");
+  console.log(hashString);
+  onClickNavLink(hashString);
 
   elements.navLinksParent.call().addEventListener("click", (e) => {
+    e.preventDefault();
     const linkElements = elements.navLinks.call();
     const refElement = e.target.closest(".nav-link");
+    if (!refElement) return;
     for (let index = 0; index < linkElements.length; index++) {
       const element = linkElements[index];
       // console.log(element.classList);
@@ -16,10 +22,13 @@ export const initialize = (navLinks, onClickNavLink) => {
     }
     refElement.classList.add("nav-link--active");
 
-    const pathInfo = refElement.dataset.path;
-    if (pathInfo) {
-      console.debug(`Found path: '${pathInfo}', invoking onClickNavLink()`);
-      onClickNavLink(pathInfo);
+    const hasLink = refElement.dataset.link.length === 0;
+    // console.log(refElement.dataset.link);
+    if (hasLink) {
+      console.debug(
+        `Found path: '${refElement.href}', invoking onClickNavLink()`
+      );
+      onClickNavLink(refElement.href);
     }
   });
 };
@@ -27,10 +36,13 @@ export const initialize = (navLinks, onClickNavLink) => {
 // export const
 
 export const renderSingleNavLink = (navLink) => {
+  console.log(navLink);
+
   const markup = `
-    <li class="nav-link center-horizontal ${
-      navLink.isActive ? "nav-link--active" : ""
-    }" data-path="${navLink.path}">
+  <a href="${navLink.route.path}" class='nav-link ${
+    navLink.route.isActive ? "nav-link--active" : ""
+  }' data-link>
+    <li class="center-horizontal" >
         <div class="link-box center-horizontal">
         <svg class="link-icon">
             <use xlink:href="${navLink.svgLink}"></use>
@@ -39,12 +51,17 @@ export const renderSingleNavLink = (navLink) => {
         <h4 class="link-title">${navLink.sectionName}</h4>
         <div class="nav-link-bg"></div>
     </li>
+    </a>
   `;
-  elements.navLinksParent.call().insertAdjacentHTML("beforeend", markup);
+  elements.navLinksParent.call().insertAdjacentHTML("afterbegin", markup);
 };
 
 export const renderNavLinks = (navLinks) => {
-  navLinks.forEach((element) => {
+  for (let index = 0; index < navLinks.length; index++) {
+    const element = navLinks[navLinks.length - (index + 1)];
     renderSingleNavLink(element);
-  });
+  }
+  // navLinks.forEach((element) => {
+  //   renderSingleNavLink(element);
+  // });
 };

@@ -1,8 +1,7 @@
 export default class NavLink {
-  constructor(svgLink, sectionName, path, isActive) {
+  constructor(svgLink, sectionName, route, isActive) {
     this.svgLink = svgLink;
     this.sectionName = sectionName;
-    this.path = path;
-    this.isActive = isActive;
+    this.route = route;
   }
 }

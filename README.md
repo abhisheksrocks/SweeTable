@@ -6,7 +6,7 @@ Use SweeTable to easily generate beautiful HTML `<table>` styles. Fast, easy and
 
 This project is currently under-development. You can however follow-along, connect with the creator or contribute in any way you prefer. While you wait, here are some links that might be useful.
 
-[Website](https://abhisheksrocks.github.io/sweetable/)
+[Website (Follow the progress)](https://abhisheksrocks.github.io/SweeTable/)
 
 [UI Design](https://www.figma.com/file/5r69EhmqiLOvpY21oU4vfG/Untitled?node-id=0%3A1)
 
