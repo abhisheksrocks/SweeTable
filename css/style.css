@@ -225,3 +225,28 @@ nav:hover .logo-container {
           backdrop-filter: blur(7px);
   /* z-index: -20; */
 }
+
+.theme-switch {
+  position: relative;
+}
+
+/* .theme-switch-button-light {
+  position: absolute;
+}
+
+.theme-switch-button-dark {
+  position: absolute;
+} */
+
+.theme-switch-button-light {
+  height: 40px;
+  width: 40px;
+  /* background-color: #364a61; */
+  background-color: white;
+}
+
+.theme-icon-light {
+  fill: #ffd43b;
+  max-height: 28px;
+  max-width: 28px;
+}

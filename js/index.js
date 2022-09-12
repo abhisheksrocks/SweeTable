@@ -2,6 +2,7 @@ import NavLink from "./models/NavLink.js";
 import Route from "./models/Route.js";
 import * as navLinkView from "./views/navLinkView.js";
 import * as mainView from "./views/mainView.js";
+import { constants } from "./views/base.js";
 
 // const myFunction = async () => {
 //   await fetch("");
@@ -51,8 +52,8 @@ routes.push(
 const navLinks = [];
 
 const pushRoute = (path) => {
-  if (!path.startsWith("/SweeTable/")) {
-    path = "/SweeTable" + path;
+  if (!path.startsWith(`/${constants.repoName}/`)) {
+    path = `/${constants.repoName}` + path;
   }
   history.pushState(null, null, path);
 };
@@ -87,12 +88,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
   matchRoute(hashString).isActive = true;
 
   navLinks.push(
-    new NavLink("./assets/images/svg/output.svg#icon-home", "Home", routes[0])
+    new NavLink(
+      "/assets/images/svg/output.svg#icon-home",
+      "Dashboard",
+      routes[0]
+    )
   );
 
   navLinks.push(
     new NavLink(
-      "./assets/images/svg/output.svg#icon-generator",
+      "/assets/images/svg/output.svg#icon-generator",
       "Generator",
       routes[1]
     )

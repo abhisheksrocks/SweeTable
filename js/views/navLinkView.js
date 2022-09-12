@@ -1,5 +1,5 @@
 // export const clearLinks =
-import { elements } from "./base.js";
+import { constants, elements } from "./base.js";
 
 export const initialize = (navLinks, onClickNavLink) => {
   renderNavLinks(navLinks);
@@ -25,10 +25,9 @@ export const initialize = (navLinks, onClickNavLink) => {
     const hasLink = refElement.dataset.link.length === 0;
     // console.log(refElement.dataset.link);
     if (hasLink) {
-      console.debug(
-        `Found path: '${refElement.href}', invoking onClickNavLink()`
-      );
-      onClickNavLink(refElement.href);
+      const path = `/${constants.repoName}${refElement.href}`;
+      console.debug(`Found path: '${path}', invoking onClickNavLink()`);
+      onClickNavLink(path);
     }
   });
 };
@@ -38,8 +37,10 @@ export const initialize = (navLinks, onClickNavLink) => {
 export const renderSingleNavLink = (navLink) => {
   console.log(navLink);
 
+  const path = `/${constants.repoName}${navLink.route.path}`;
+
   const markup = `
-  <a href="${navLink.route.path}" class='nav-link ${
+  <a href="${path}" class='nav-link ${
     navLink.route.isActive ? "nav-link--active" : ""
   }' data-link>
     <li class="center-horizontal" >

@@ -19,6 +19,10 @@ export const elements = {
   },
 };
 
+export const constants = {
+  repoName: "SweeTable",
+};
+
 // document.se
 const querySelector = (className) => document.querySelector(className);
 const querySelectorAll = (className) => document.querySelectorAll(className);
