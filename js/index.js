@@ -105,3 +105,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   navLinkView.initialize(navLinks, navigator);
 });
+
+document.querySelector(".theme-switch").addEventListener("click", (e) => {
+  const refElement = e.target.closest(".theme-switch-button");
+  if (!refElement) return;
+
+  const elements = document.querySelectorAll(".theme-switch-button");
+  elements.forEach((current) => {
+    current.classList.remove("theme-switch-button-active");
+  });
+  refElement.classList.add("theme-switch-button-active");
+});
