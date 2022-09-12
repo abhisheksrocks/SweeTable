@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   navLinks.push(
     new NavLink(
-      "/assets/images/svg/output.svg#icon-home",
+      "./assets/images/svg/output.svg#icon-home",
       "Dashboard",
       routes[0]
     )
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   navLinks.push(
     new NavLink(
-      "/assets/images/svg/output.svg#icon-generator",
+      "./assets/images/svg/output.svg#icon-generator",
       "Generator",
       routes[1]
     )
