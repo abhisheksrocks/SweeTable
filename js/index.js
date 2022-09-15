@@ -2,7 +2,9 @@ import NavLink from "./models/NavLink.js";
 import Route from "./models/Route.js";
 import * as navLinkView from "./views/navLinkView.js";
 import * as mainView from "./views/mainView.js";
+import * as themeView from "./views/themeView.js";
 import { constants } from "./views/base.js";
+import CssVariable from "./models/CssVariable.js";
 
 // const myFunction = async () => {
 //   await fetch("");
@@ -11,6 +13,10 @@ import { constants } from "./views/base.js";
 // console.log(location.pathname);
 
 const routes = [];
+
+const localStorageVariables = {
+  isLightThemeActive: "isLightThemeActive",
+};
 
 routes.push(
   new Route(
@@ -82,6 +88,49 @@ const navigator = async (path) => {
 };
 
 document.addEventListener("DOMContentLoaded", (e) => {
+  const cssVariables = [];
+  const relevantCSSVariableNames = {
+    bg_navbar_1_values: "--bg-navbar-1-values",
+    bg_navbar_2_values: "--bg-navbar-2-values",
+    fg_navbar_1_values: "--fg-navbar-1-values",
+  };
+
+  cssVariables.push(
+    new CssVariable(
+      relevantCSSVariableNames.bg_navbar_1_values,
+      null,
+      "34, 34, 34",
+      true
+    )
+  );
+
+  cssVariables.push(
+    new CssVariable(
+      relevantCSSVariableNames.bg_navbar_2_values,
+      null,
+      "178, 186, 195",
+      true
+    )
+  );
+
+  cssVariables.push(
+    new CssVariable(
+      relevantCSSVariableNames.fg_navbar_1_values,
+      null,
+      "255, 255, 255",
+      true
+    )
+  );
+
+  // var rootElement = document.querySelector(":root");
+  // console.log(
+  //   getComputedStyle(rootElement).getPropertyValue("--bg-navbar-1-values")
+  // );
+
+  // rootElement.style.setProperty("--bg-navbar-1-values", "34, 34, 34");
+  // // rootElement.style.setProperty("--fg-navbar-1-values", "150, 161, 176");
+  // rootElement.style.setProperty("--fg-navbar-1-values", "255, 255, 255");
+
   let hashString = location.hash;
   hashString = hashString.replace("#", "/");
   console.log(hashString);
@@ -103,16 +152,29 @@ document.addEventListener("DOMContentLoaded", (e) => {
     )
   );
 
+  themeView.initialize(cssVariables, (toLight) => {
+    localStorage.setItem(localStorageVariables.isLightThemeActive, toLight);
+    console.log(localStorage.getItem(localStorageVariables.isLightThemeActive));
+  });
+
+  console.log(localStorage.getItem(localStorageVariables.isLightThemeActive));
+
+  if (
+    localStorage.getItem(localStorageVariables.isLightThemeActive) == "false"
+  ) {
+    themeView.changeTheme(false);
+  }
+
   navLinkView.initialize(navLinks, navigator);
 });
 
-document.querySelector(".theme-switch").addEventListener("click", (e) => {
-  const refElement = e.target.closest(".theme-switch-button");
-  if (!refElement) return;
+// document.querySelector(".theme-switch").addEventListener("click", (e) => {
+//   const refElement = e.target.closest(".theme-switch-button");
+//   if (!refElement) return;
 
-  const elements = document.querySelectorAll(".theme-switch-button");
-  elements.forEach((current) => {
-    current.classList.remove("theme-switch-button-active");
-  });
-  refElement.classList.add("theme-switch-button-active");
-});
+//   const elements = document.querySelectorAll(".theme-switch-button");
+//   elements.forEach((current) => {
+//     current.classList.remove("theme-switch-button-active");
+//   });
+//   refElement.classList.add("theme-switch-button-active");
+// });

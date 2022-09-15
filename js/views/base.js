@@ -1,4 +1,10 @@
 export const elements = {
+  root: {
+    selector: ":root",
+    call: function () {
+      return querySelector(this.selector);
+    },
+  },
   navLinksParent: {
     selector: ".nav-links",
     call: function () {
@@ -15,6 +21,18 @@ export const elements = {
     selector: "main",
     call: function () {
       return querySelector(this.selector);
+    },
+  },
+  themeSwitchButtonContainer: {
+    selector: ".theme-switch",
+    call: function () {
+      return querySelector(this.selector);
+    },
+  },
+  themeSwitchButtons: {
+    selector: ".theme-switch-button",
+    call: function () {
+      return querySelectorAll(this.selector);
     },
   },
 };
