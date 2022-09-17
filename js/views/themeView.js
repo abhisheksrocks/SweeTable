@@ -53,13 +53,19 @@ export const changeTheme = (toLight = true) => {
     toLight ? ".theme-switch-button-light" : ".theme-switch-button-dark"
   );
   if (!refBtn) return;
-  const elements = document.querySelectorAll(".theme-switch-button");
-  elements.forEach((current) => {
+  const themeBtns = document.querySelectorAll(".theme-switch-button");
+  themeBtns.forEach((current) => {
     current.classList.remove("theme-switch-button-active");
   });
   refBtn.classList.add("theme-switch-button-active");
 
+  const rootElement = elements.root.call();
+
   cssVariables.forEach((element) => {
-    element.change(toLight);
+    rootElement.style.setProperty(
+      element.variableName,
+      toLight ? element.lightThemeValue : element.darkThemeValue
+    );
+    // element.change(toLight);
   });
 };

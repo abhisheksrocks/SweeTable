@@ -9,6 +9,7 @@
   <body>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        console.log("Here");
         // location.pathname = location.pathname;
         const defaultPath = location.pathname;
         const parsablePath = defaultPath.replace("/SweeTable/", "/SweeTable/#");
@@ -19,7 +20,7 @@
         // `;
 
         // Testing this
-        window.location.href = `https://${location.hostname}${parsablePath}`;
+        window.location.href = `${location.protocol}//${location.host}${parsablePath}`;
       });
     </script>
   </body>

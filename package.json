@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "postcss:watch": "postcss ./css/src/style.css --dir ./css/ --watch",
-    "vite:watch": "vite",
+    "server": "node dev_server.js",
     "grunt:watch": "grunt watch",
     "initialize": "grunt default",
-    "start": "concurrently -n grunt:watch,vite -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"npm:grunt:watch\" \"npm:vite:watch\" \"npm:postcss:watch\" --kill-others",
+    "start": "concurrently -n grunt:watch,server -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"npm:grunt:watch\" \"npm:server\" \"npm:postcss:watch\" --kill-others",
     "start:alternative": "concurrently -n prerun,​ -c \"bgCyan.bold,reset\" \"npm:initialize\" \"npm:dev\" --group"
   },
   "repository": {
@@ -22,16 +22,16 @@
   "bugs": {
     "url": "https://github.com/abhisheksrocks/SweeTable/issues"
   },
-  "homepage": "https://github.com/abhisheksrocks/SweeTable#readme",
+  "homepage": "https://abhisheksrocks.github.io/SweeTable/",
   "devDependencies": {
     "autoprefixer": "^10.4.8",
     "concurrently": "^7.3.0",
     "grunt": "^1.5.3",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-svg-sprite": "^1.3.7",
+    "mime": "^3.0.0",
     "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0",
-    "svgo": "^2.8.0",
-    "vite": "^3.0.9"
+    "svgo": "^2.8.0"
   }
 }

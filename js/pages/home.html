@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    .home {
+      margin-left: var(--navbar-current-width);
+      min-height: 100vh;
+      /* background-color: #fff; */
+      /* color: #fff; */
+      padding: 2em;
+    }
+
+    .navbar:hover + main > .home {
+      --navbar-current-width: var(--navbar-expanded-width);
+    }
+
+    .loader {
+      align-self: center;
+    }
+  </style>
+  <body>
+    <div class="home page">
+      <h1 class="page-title">Hello World</h1>
+    </div>
+  </body>
+</html>

@@ -5,12 +5,8 @@ import * as mainView from "./views/mainView.js";
 import * as themeView from "./views/themeView.js";
 import { constants } from "./views/base.js";
 import CssVariable from "./models/CssVariable.js";
-
-// const myFunction = async () => {
-//   await fetch("");
-// };
-
-// console.log(location.pathname);
+import { elements } from "./views/base.js";
+import PageAbstract from "./pages/PageAbstract.js";
 
 const routes = [];
 
@@ -19,38 +15,14 @@ const localStorageVariables = {
 };
 
 routes.push(
-  new Route(
-    "/",
-    ["/home"],
-    () => {
-      console.log("Viewing Root");
-      return `
-      <div class="home">
-      <h1>Hello World</h1>
-      </div>
-      `;
-    },
-    false
-  )
+  new Route("/", ["/home"], new PageAbstract("./js/pages/home.html"), false)
 );
 
 routes.push(
   new Route(
     "/generator",
     [],
-    () => {
-      console.log("Viewing Generator");
-      return `
-        <div class="generator-foreground"></div>
-        <div class="generator">
-          <h1>Generator View</h1>
-          <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Quaerat id placeat, mollitia nesciunt culpa vel totam tempore nostrum eveniet maiores.
-          </p>
-        </div>
-      `;
-    },
+    new PageAbstract("./js/pages/generator.html"),
     false
   )
 );
@@ -84,41 +56,60 @@ const matchRoute = (path) => {
 const navigator = async (path) => {
   const refRoute = matchRoute(path);
   pushRoute(refRoute.path);
-  mainView.updateContent(refRoute.view());
+  mainView.showLoader();
+  const htmlContent = await refRoute.view.getContent();
+  console.log(htmlContent);
+  mainView.updateContent(htmlContent);
 };
 
 document.addEventListener("DOMContentLoaded", (e) => {
+  const rootElement = elements.root.call();
+  const computedRootElement = getComputedStyle(rootElement);
+
   const cssVariables = [];
   const relevantCSSVariableNames = {
     bg_navbar_1_values: "--bg-navbar-1-values",
     bg_navbar_2_values: "--bg-navbar-2-values",
     fg_navbar_1_values: "--fg-navbar-1-values",
+    bg_pages_1: "--bg-pages-1",
   };
 
   cssVariables.push(
     new CssVariable(
       relevantCSSVariableNames.bg_navbar_1_values,
-      null,
-      "34, 34, 34",
-      true
+      computedRootElement.getPropertyValue(
+        relevantCSSVariableNames.bg_navbar_1_values
+      ),
+      "34, 34, 34"
     )
   );
 
   cssVariables.push(
     new CssVariable(
       relevantCSSVariableNames.bg_navbar_2_values,
+      computedRootElement.getPropertyValue(
+        relevantCSSVariableNames.bg_navbar_2_values
+      ),
       null,
-      "178, 186, 195",
-      true
+      "178, 186, 195"
     )
   );
 
   cssVariables.push(
     new CssVariable(
       relevantCSSVariableNames.fg_navbar_1_values,
-      null,
-      "255, 255, 255",
-      true
+      computedRootElement.getPropertyValue(
+        relevantCSSVariableNames.fg_navbar_1_values
+      ),
+      "255, 255, 255"
+    )
+  );
+
+  cssVariables.push(
+    new CssVariable(
+      relevantCSSVariableNames.bg_pages_1,
+      computedRootElement.getPropertyValue(relevantCSSVariableNames.bg_pages_1),
+      "#000"
     )
   );
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    .page {
+      position: relative;
+      z-index: -20;
+    }
+
+    .generator {
+      position: relative;
+      min-height: 100vh;
+      /* background-color: plum; */
+      color: #fff;
+      z-index: -20;
+      margin-left: var(--navbar-collapsed-width);
+      padding: 2em;
+    }
+
+    .generator-foreground {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: -19;
+    }
+
+    .navbar:hover + main .generator-foreground {
+      backdrop-filter: blur(7px);
+      /* z-index: -20; */
+    }
+  </style>
+  <body>
+    <div class="page">
+      <div class="generator-foreground"></div>
+      <div class="generator">
+        <h1 class="page-title">Generator View</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat id
+          placeat, mollitia nesciunt culpa vel totam tempore nostrum eveniet
+          maiores.
+        </p>
+      </div>
+      <!-- </div> -->
+    </div>
+  </body>
+</html>
