@@ -16,10 +16,117 @@
     .loader {
       align-self: center;
     }
+
+    .page-text {
+      margin: 1em 0;
+    }
+
+    .bold {
+      font-weight: 600;
+    }
+
+    .block {
+      background-color: var(--fg-navbar-opacity-10);
+      padding: 1em;
+      color: var(--fg-pages-2);
+    }
+
+    .creator-link {
+      background-color: var(--fg-navbar-opacity-10);
+      display: inline-flex;
+      gap: 0.5em;
+      padding: 0.5em;
+      text-decoration: none;
+      color: var(--fg-pages-2);
+    }
+
+    .brand-icon {
+      fill: var(--fg-pages-2);
+
+      max-width: 1.5em;
+      max-height: 1.5em;
+    }
+
+    .connect-section {
+      display: flex;
+      gap: 1em;
+    }
   </style>
   <body>
     <div class="home page">
-      <h1 class="page-title">Hello World</h1>
+      <h1 class="page-title-l1">Hello World!</h1>
+      <p class="page-text">
+        Use
+        <span class="bold"
+          ><span class="fg-color-1-opacity-50">SweeTable</span
+          ><span class="fg-color-1"></span
+        ></span>
+        to easily generate beautiful HTML &lttable&gt styles. Fast, easy and
+        customizable.
+      </p>
+      <h2 class="page-title-l1">For Developers</h2>
+      <p class="page-text">
+        This project explores on the idea of making a single-page website, with
+        support for dynamic URLs with just Github Pages, using Vanilla JS. Let's
+        understand this better with an example:-
+      </p>
+      <p class="page-text">When a user opens the URL:-</p>
+      <div class="block">
+        https://somewebsite.com/with/some/url?that=can&have=queryParams
+      </div>
+      <p class="page-text">
+        Traditionally, there is a web-server(like NodeJS) in the backend that
+        handles the routing, i.e. looks for which file to serve the user based
+        on the URL parameters. This project aims to utilize Github Pages and
+        Vanilla JavaScript to implement this routing logic on the client's
+        side(Client Side Routing).
+      </p>
+      <h2 class="page-title-l3">Similar Projects</h2>
+      <p class="page-text">
+        <a
+          class="anchor"
+          href="https://github.com/rafgraph/spa-github-pages"
+          target="_blank"
+          >Single Page Apps for GitHub Pages</a
+        >
+        - Uses React to achieve this goal
+      </p>
+      <h2 class="page-title-l1">Connect with the creator</h2>
+      <p class="page-text">
+        The creator likes connecting with like-minded people. He would
+        definitely love talking to you. Here are some links you can check out:
+      </p>
+      <div class="center-horizontal connect-section">
+        <a
+          class="creator-link"
+          href="https://github.com/abhisheksrocks"
+          target="_blank"
+          ><svg class="brand-icon">
+            <use xlink:href="./assets/images/svg/output.svg#icon-github"></use>
+          </svg>
+          GitHub Profile</a
+        >
+        <a
+          class="creator-link"
+          href="https://www.linkedin.com/in/abhishek-97099b125/"
+          target="_blank"
+          ><svg class="brand-icon">
+            <use
+              xlink:href="./assets/images/svg/output.svg#icon-linkedin"
+            ></use>
+          </svg>
+          LinkedIn Profile</a
+        >
+        <a
+          class="creator-link"
+          href="mailto:abhishekbinay@gmail.com"
+          target="_blank"
+          ><svg class="brand-icon">
+            <use xlink:href="./assets/images/svg/output.svg#icon-email"></use>
+          </svg>
+          abhishekbinay@gmail.com</a
+        >
+      </div>
     </div>
   </body>
 </html>

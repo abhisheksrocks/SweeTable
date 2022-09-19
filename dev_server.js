@@ -19,16 +19,23 @@ if (!homepageURL.endsWith("/")) {
   homepageURL += "/";
 }
 const urlPostFix = url.parse(homepageURL).path;
+const urlPostFixWithoutSlash = urlPostFix.substring(0, urlPostFix.length - 1);
 // console.log(homepageURL.href);
 // console.log(jsonParsed.url);
 
 const server = http.createServer((req, res) => {
-  //   console.log(req);
   const currentURL = new url.URL(req.url, `http://${req.headers.host}`);
-  //   console.log(currentURL);
-  //   console.log(currentURL.pathname);
+
+  if (currentURL.pathname === urlPostFixWithoutSlash) {
+    res.writeHead(301, {
+      location: urlPostFix,
+    });
+    res.end();
+    return;
+  }
+
   if (!currentURL.pathname.startsWith(urlPostFix)) {
-    res.writeHead(200, { "Content-type": "text/html" });
+    res.writeHead(404, { "Content-type": "text/html" });
     res.end("404 page not found", "utf-8");
     return;
   }
@@ -44,7 +51,7 @@ const server = http.createServer((req, res) => {
     if (err) {
       console.log("ERROR OCCURRED! for filepath: " + filePath);
       const handleContent = (content) => {
-        res.writeHead(200, { "Content-type": "text/html" });
+        res.writeHead(404, { "Content-type": "text/html" });
         res.end(content, "utf-8");
       };
 

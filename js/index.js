@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     bg_navbar_2_values: "--bg-navbar-2-values",
     fg_navbar_1_values: "--fg-navbar-1-values",
     bg_pages_1: "--bg-pages-1",
+    fg_pages_2: "--fg-pages-2",
   };
 
   cssVariables.push(
@@ -110,6 +111,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
       relevantCSSVariableNames.bg_pages_1,
       computedRootElement.getPropertyValue(relevantCSSVariableNames.bg_pages_1),
       "#000"
+    )
+  );
+
+  cssVariables.push(
+    new CssVariable(
+      relevantCSSVariableNames.fg_pages_2,
+      computedRootElement.getPropertyValue(relevantCSSVariableNames.fg_pages_2),
+      "#fff"
     )
   );
 
