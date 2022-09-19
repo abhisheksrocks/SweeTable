@@ -95,6 +95,7 @@ body {
 .navbar {
   position: fixed;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   width: var(--navbar-current-width);
   background-color: var(--bg-navbar-1);
   /* border-right: #b2bac3 thin solid; */
